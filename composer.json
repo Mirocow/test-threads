@@ -1,0 +1,12 @@
+{
+    "require": {
+        "php": "~7.3",
+        "vladimir163/lead-generator": "@dev",
+        "amphp/amp": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "server\\": "src/"
+        }
+    }
+}
