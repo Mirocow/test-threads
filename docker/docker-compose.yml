@@ -1,0 +1,64 @@
+version: "3.7"
+
+services:
+
+  nginx:
+    build:
+      context: provision/nginx
+      args:
+        - NGINX_VERSION=${NGINX_VERSION}
+    shm_size: '4gb'
+    restart: unless-stopped
+    volumes:
+      - ../:/app:rw
+      - ./logs/nginx:/var/log/nginx
+      - ./etc/nginx/conf.d/bcs-tz.loc.conf:/etc/nginx/conf.d/bcs-tz.loc.conf
+    environment:
+      TZ: 'Europe/Moscow'
+    ports:
+      - '80:80'
+    expose:
+      - '80'
+    depends_on:
+      - 'php'
+    networks:
+      docker_default:
+        ipv4_address: 172.31.1.2
+
+  php:
+    build: provision/php/${PHP_VER}
+    shm_size: '4gb'
+    restart: unless-stopped
+    expose:
+      - '9000'
+      - '9001'
+    environment:
+      TZ: 'Europe/Moscow'
+      PHP_IDE_CONFIG: 'serverName=${LOCAL_HOST}'
+    volumes:
+      - ../:/app:rw
+      - ./logs/php:/var/log/php7
+    sysctls:
+      net.core.somaxconn: '1024'
+    networks:
+      docker_default:
+        ipv4_address: 172.31.1.3
+
+
+volumes:
+    mysql:
+        driver: "local"
+
+networks:
+  internal:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+  docker_default:
+    ipam:
+      driver: default
+      config:
+        - subnet: ${NET_CONFIG_SUBNET}
+          gateway: ${NET_CONFIG_GATEWAY}
