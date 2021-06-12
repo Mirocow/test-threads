@@ -1,8 +1,8 @@
 <?php
 
-namespace tests;
+namespace tests\threads;
 
-class ThreadsByPcntl
+class Pcntl
 {
     private $queue;
 
