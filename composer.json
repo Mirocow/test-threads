@@ -2,7 +2,8 @@
     "require": {
         "php": "~7.3",
         "vladimir163/lead-generator": "@dev",
-        "amphp/amp": "^2.5"
+        "amphp/amp": "^2.5",
+        "amphp/parallel": "^1.4"
     },
     "autoload": {
         "psr-4": {

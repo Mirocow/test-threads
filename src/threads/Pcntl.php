@@ -2,7 +2,7 @@
 
 namespace tests;
 
-class Threads
+class ThreadsByPcntl
 {
     private $queue;
 

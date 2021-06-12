@@ -124,11 +124,15 @@ RUN set -xe \
 	&& sed -i 's/^exec $PHP -C -n/exec $PHP -C/g' $(which pecl) \
 	&& pecl channel-update pecl.php.net \
 	&& pecl install yaml \
-	event \
+	&& pecl install event \
+	&& pecl install -D 'enable-sockets="yes" enable-openssl="no" enable-http2="no" enable-mysqlnd="no" enable-swoole-json="yes" enable-swoole-curl="yes"' swoole \
+	#&& pecl install pthreads \
 	#&& pecl install yaml geoip-1.1.1 \
 	#&& echo "extension=geoip.so" >> $PHP_INI_DIR/conf.d/geoip.ini \
 	&& echo "extension=yaml.so" > $PHP_INI_DIR/conf.d/01_yaml.ini \
 	&& echo "extension=event.so" > $PHP_INI_DIR/conf.d/01_event.ini \
+	&& echo "extension=swoole.so" > $PHP_INI_DIR/conf.d/01_swoole.ini \
+	#&& echo "extension=pthreads.so" > $PHP_INI_DIR/conf.d/01_pthreads.ini \
 	#&& wget -q https://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz -P /usr/share/GeoIP/ \
 	#&& gzip -d /usr/share/GeoIP/GeoLiteCity.dat.gz \
 	#&& mv /usr/share/GeoIP/GeoLiteCity.dat /usr/share/GeoIP/GeoIPCity.dat \		

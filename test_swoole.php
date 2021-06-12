@@ -12,19 +12,29 @@ $generator->generateLeads(10000, function (\LeadGenerator\Lead $lead) use (&$que
 
 define('LOG_FILE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'log.log');
 
-function asyncCall($lead){
+@unlink(LOG_FILE_PATH);
+
+$workers = [];
+$worker_num = 3;
+
+function asyncCall(Swoole\Process $process){
+    $lead = unserialize($process->read());
     sleep(2);
     file_put_contents(LOG_FILE_PATH, implode('|', [$lead->id, $lead->categoryName, time()]) . "\n", FILE_APPEND);
     //echo "Done {$lead->id}\n";
     return true;
 }
 
-@unlink(LOG_FILE_PATH);
-
 $start = microtime(true);
-while(count($queue) > 0) {
-    $threads = new \tests\threads\Pcntl($queue);
-    $threads->runAsync(500);
+while (count($queue) > 0) {
+    for ($i = 0; $i < 500; $i++) {
+        $lead    = array_shift($queue);
+        $process = new Swoole\Process('asyncCall');
+        $process->write(serialize($lead));
+        $pid           = $process->start();
+        $workers[$pid] = $process;
+        echo "create a child process: $pid\n";
+    }
 }
 $finish = microtime(true);
 $delta = $finish - $start;
