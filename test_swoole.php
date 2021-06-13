@@ -14,9 +14,6 @@ define('LOG_FILE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'log.log');
 
 @unlink(LOG_FILE_PATH);
 
-$workers = [];
-$worker_num = 3;
-
 function asyncCall(Swoole\Process $process){
     $lead = unserialize($process->read());
     sleep(2);
