@@ -35,4 +35,4 @@ while (count($queue) > 0) {
 }
 $finish = microtime(true);
 $delta = $finish - $start;
-echo $delta / 60 . ' мин.';
+echo $delta / 60 . ' min.';
