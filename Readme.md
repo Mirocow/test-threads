@@ -8,7 +8,7 @@ $ docker-compose up -d
 $ docker-compose php php test_pcntl.php
 ```
 
-## Swole
+## Swoole
 
 ```bash
 $ cd docker
