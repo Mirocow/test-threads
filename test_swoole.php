@@ -18,7 +18,6 @@ function asyncCall(Swoole\Process $process){
     $lead = unserialize($process->read());
     sleep(2);
     file_put_contents(LOG_FILE_PATH, implode('|', [$lead->id, $lead->categoryName, time()]) . "\n", FILE_APPEND);
-    //echo "Done {$lead->id}\n";
     return true;
 }
 
@@ -30,7 +29,6 @@ while (count($queue) > 0) {
         $process->write(serialize($lead));
         $pid           = $process->start();
         $workers[$pid] = $process;
-        echo "create a child process: $pid\n";
     }
 }
 $finish = microtime(true);
