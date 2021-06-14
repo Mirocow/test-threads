@@ -1,5 +1,4 @@
-# Asynchrone save into file
-
+# Tests using the asynfronous save to file method
 ```php
 $commands = \tests\Commands::getInstance();
 $commands->threads = 500;
