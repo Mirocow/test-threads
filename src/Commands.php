@@ -59,6 +59,8 @@ class Commands
 
     /**
      * Public method tests for run all tests
+     *
+     * @param EventCommand $event
      */
     public function runTests(EventCommand $event): void
     {

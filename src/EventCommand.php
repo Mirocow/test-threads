@@ -21,7 +21,7 @@ class EventCommand implements EventInterface
      * @param string   $eventName
      * @param callable $callable
      */
-    public function on(string $eventName, callable $callable): void
+    public function on (string $eventName, callable $callable): void
     {
         $this->events[$eventName] = $callable;
     }
@@ -29,7 +29,7 @@ class EventCommand implements EventInterface
     /**
      * @param string $eventName
      */
-    public function off(string $eventName): void
+    public function off (string $eventName): void
     {
         unset($this->events[$eventName]);
     }
@@ -41,13 +41,13 @@ class EventCommand implements EventInterface
      * @return false|mixed
      * @throws EventException
      */
-    public function __call($name, $args)
+    public function __call ($name, $args)
     {
-        if( method_exists($this, $name) ) {
+        if (method_exists($this, $name)) {
             return call_user_func_array([&$this, $name], $args);
         }
 
-        elseif (isset($this->events[$name]) && is_callable($this->events[$name])) {
+        else if (isset($this->events[$name]) && is_callable($this->events[$name])) {
             return call_user_func_array($this->events[$name], $args);
         }
 

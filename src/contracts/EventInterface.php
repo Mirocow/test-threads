@@ -2,6 +2,11 @@
 
 namespace tests\contracts;
 
+/**
+ * Interface EventInterface
+ *
+ * @package tests\contracts
+ */
 Interface EventInterface
 {
     /**

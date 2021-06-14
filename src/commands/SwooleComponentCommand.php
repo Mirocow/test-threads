@@ -4,7 +4,6 @@ namespace tests\commands;
 
 use tests\Commands;
 use tests\TestMultithreadCommand;
-use Swoole\Process;
 
 /**
  * Class SwooleComponentCommand
