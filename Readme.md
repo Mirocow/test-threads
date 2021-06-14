@@ -1,5 +1,11 @@
 # Tests using the asynfronous save to file method
 ```php
+$test = function ($lead){
+    sleep(2);
+    file_put_contents(LOG_FILE_PATH, implode('|', [$lead->id, $lead->categoryName, time()]) . "\n", FILE_APPEND);
+    return true;
+};
+
 $commands = \tests\Commands::getInstance();
 $commands->threads = 500;
 $commands->count = 10000;
