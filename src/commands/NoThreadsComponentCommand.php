@@ -18,7 +18,6 @@ class NoThreadsComponentCommand extends TestMultithreadCommand
      * @param callable $callable
      */
     public function __construct (callable $callable) {
-        Commands::getInstance()->threads = 1;
         parent::__construct($callable);
     }
 
