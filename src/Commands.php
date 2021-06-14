@@ -59,19 +59,23 @@ class Commands
 
     /**
      * Public method tests for run all tests
-     *
-     * @param EventCommand $event
+     * 
+     * @param EventCommand|null $event
      */
-    public function runTests(EventCommand $event): void
+    public function runTests(EventCommand $event = null): void
     {
         while (!$this->isEmpty()) {
             echo "Begin tests {$this->count} leads write with threads: {$this->threads}\n";
             /** @var CommandInterface[] $commands */
             $commands = $this->getCommands();
             foreach ($commands as $command) {
-                $params = $event->beforeTest($command);
+                if($event) {
+                    $params = $event->beforeTest($command);
+                }
                 $command->runTest($this->threads);
-                $event->afterTest($command, $params);
+                if($event) {
+                    $event->afterTest($command, $params);
+                }
             }
         }
     }
