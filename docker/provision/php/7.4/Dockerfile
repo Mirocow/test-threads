@@ -120,6 +120,11 @@ RUN set -xe \
 	&& apk add --no-cache \
 	--virtual .phpize-deps \
 	$PHPIZE_DEPS \
+	&& sed -i 's/^exec $PHP -C -n/exec $PHP -C/g' $(which pecl) \
+	&& pecl channel-update pecl.php.net \
+	&& pecl install yaml \
+	&& pecl install event \
+	&& pecl install -D 'enable-sockets="yes" enable-openssl="no" enable-http2="no" enable-mysqlnd="no" enable-swoole-json="yes" enable-swoole-curl="yes"' swoole \
 	#&& sed -i 's/^exec $PHP -C -n/exec $PHP -C/g' $(which pecl) \
 	#&& pecl channel-update pecl.php.net \
     #&& pecl install yaml event \

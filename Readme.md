@@ -5,7 +5,7 @@
 ```bash
 $ cd docker
 $ docker-compose up -d
-$ docker-compose php php test_pcntl.php
+$ docker-compose php php test.php
 ```
 
 ## Swoole
@@ -13,5 +13,5 @@ $ docker-compose php php test_pcntl.php
 ```bash
 $ cd docker
 $ docker-compose up -d
-$ docker-compose php php test_swoole.php
+$ docker-compose php php test.php
 ```
