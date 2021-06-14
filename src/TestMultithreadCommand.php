@@ -52,10 +52,17 @@ abstract class TestMultithreadCommand implements CommandInterface
      */
     protected function getLeads(): array
     {
-        $queue = [];
-        $this->generator->generateLeads(Commands::getInstance()->count, function (\LeadGenerator\Lead $lead) use (&$queue) {
-            $queue[] = $lead;
-        });
+        static $queue;
+
+        if(!$queue) {
+            $queue = [];
+            $this->generator->generateLeads(
+                Commands::getInstance()->count,
+                function (\LeadGenerator\Lead $lead) use (&$queue) {
+                    $queue[] = $lead;
+                }
+            );
+        }
         return $queue;
     }
 
