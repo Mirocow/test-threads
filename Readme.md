@@ -20,8 +20,13 @@ $commands->runTests($event);
 
 ## Tests
 
-* PCNTL
-* Swoole
+* threads
+* parallel
+* swoole - done
+* pcntl - done
+* popen
+* proc_open
+* queue
 
 ## Run
 
