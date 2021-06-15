@@ -22,8 +22,8 @@ $commands->runTests($event);
 
 * threads
 * parallel
-* (swoole)[https://www.php.net/manual/book.swoole.php] - done
-* (pcntl)[https://www.php.net/manual/book.pcntl.php] - done
+* [swoole](https://www.php.net/manual/book.swoole.php) - done
+* [pcntl](https://www.php.net/manual/book.pcntl.php) - done
 * popen
 * proc_open
 * queue
