@@ -1,4 +1,4 @@
-# Tests using the asynfronous save to file method
+# Tests using the asynchronous save to file method
 
 ```php
 $test = function ($lead){
