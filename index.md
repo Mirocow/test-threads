@@ -19,6 +19,16 @@ $commands->runTests($event);
 ```
 ## Tests
 
+* threads
+* parallel
+* [swoole](https://www.php.net/manual/book.swoole.php) - done
+* [pcntl](https://www.php.net/manual/book.pcntl.php) - done
+* popen
+* proc_open
+* queue
+
+## Run
+
 ```bash
 $ cd docker
 $ docker-compose up -d
