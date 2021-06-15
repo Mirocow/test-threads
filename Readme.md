@@ -14,7 +14,7 @@ $commands->threads = 500;
 $commands->count = 10000;
 $commands->add(new \tests\commands\PcntlComponentCommand($test));
 $commands->add(new \tests\commands\SwooleComponentCommand($test));
-$commands->add(new \tests\commands\NoThreadsComponentCommand($test)); // only 1 threads
+$commands->add(new \tests\commands\NoThreadsComponentCommand($test)); // only 1 thread
 $commands->runTests($event);
 ```
 
