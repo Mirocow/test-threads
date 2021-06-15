@@ -1,4 +1,4 @@
-## ests using the asynchronous save to file method
+## Tests using the asynchronous save to file method
 
 <p align="center"><a href="#" target="_blank"><img width="400" src="https://github.com/Mirocow/test-threads/raw/master/forks.png"></a></p>
 
